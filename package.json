@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/MoonW1nd/shri2018-2-performance#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "browser-sync": "^2.26.3",
     "gulp": "^3.9.1",
+    "gulp-babel": "^8.0.0",
     "gulp-clean": "^0.4.0",
     "gulp-csso": "^3.0.1",
     "gulp-htmlmin": "^5.0.1",

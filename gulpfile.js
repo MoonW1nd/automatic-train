@@ -8,6 +8,7 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const minifyHTML = require('gulp-htmlmin');
+const babel = require('gulp-babel');
 const removeEmptyLines = require('gulp-remove-empty-lines');
 
 
@@ -24,7 +25,7 @@ function watch() {
 gulp.task('styles', () => gulp
   .src(['./src/**/*.css'])
   .pipe(plumber())
-  // .pipe(csso())
+  .pipe(csso())
   .pipe(gulp.dest('build')));
 
 gulp.task('assets', () => gulp
@@ -36,7 +37,10 @@ gulp.task('assets', () => gulp
 gulp.task('javaScript', () => gulp
   .src(['src/**/*.js'])
   .pipe(plumber())
-  // .pipe(uglify())
+  .pipe(babel({
+    presets: ['@babel/env']
+  }))
+  .pipe(uglify())
   .pipe(gulp.dest('build')));
 
 const minifyHTMLOptions = {
