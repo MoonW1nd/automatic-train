@@ -7,7 +7,7 @@ const plumber = require('gulp-plumber');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const clean = require('gulp-clean');
-const minifyHTML = require('gulp-htmlnano');
+const minifyHTML = require('gulp-htmlmin');
 const removeEmptyLines = require('gulp-remove-empty-lines');
 
 
@@ -21,47 +21,52 @@ function watch() {
   gulp.watch('src/**/*.html', html).on('change', browserSync.reload);
 }
 
-gulp.task('styles', function() {
-  return gulp
-    .src(['./src/**/*.css'])
-    .pipe(plumber())
-    // .pipe(csso())
-    .pipe(gulp.dest('build'));
-});
+gulp.task('styles', () => gulp
+  .src(['./src/**/*.css'])
+  .pipe(plumber())
+  // .pipe(csso())
+  .pipe(gulp.dest('build')));
 
-gulp.task('assets', function () {
-  return gulp
-    .src(['src/assets/**'])
-    .pipe(plumber())
-    .pipe(imagemin())
-    .pipe(gulp.dest('build/assets'));
-});
+gulp.task('assets', () => gulp
+  .src(['src/assets/**'])
+  .pipe(plumber())
+  .pipe(imagemin())
+  .pipe(gulp.dest('build/assets')));
 
-gulp.task('javaScript', function javaScript() {
-  return gulp
+gulp.task('javaScript', () => gulp
   .src(['src/**/*.js'])
   .pipe(plumber())
   // .pipe(uglify())
-  .pipe(gulp.dest('build'));
+  .pipe(gulp.dest('build')));
+
+const minifyHTMLOptions = {
+  custom: [],
+  mergeScripts: true,
+  mergeStyles: true,
+  minifyCss: {
+    preset: 'default',
+  },
+  minifyJs: {},
+  minifyJson: {},
+  minifySvg: {},
+  removeEmptyAttributes: true,
+  removeRedundantAttributes: false,
+  removeComments: 'safe',
+};
+
+gulp.task('html', () => gulp
+  .src(['src/*.html'])
+  .pipe(plumber())
+  .pipe(minifyHTML(minifyHTMLOptions))
+  .pipe(gulp.dest('build')));
+
+gulp.task('move', () => {
+  gulp.src(['!./src/**/*.css', '!src/assets/**', '!src/**/*.js', '!src/*.html', 'src/**/*.*'])
+    .pipe(gulp.dest('build/'));
 });
 
-gulp.task('html', function html() {
-  return gulp
-    .src(['src/*.html'])
-    .pipe(plumber())
-    .pipe(minifyHTML())
-    .pipe(gulp.dest('build'));
-});
+gulp.task('clear', () => gulp.src(['build'], { read: false, allowEmpty: true })
+  .pipe(clean({ force: true })));
 
-gulp.task('move', function(){
-  gulp.src(['!./src/**/*.css', '!src/assets/**', '!src/**/*.js', '!src/*.html', 'src/*.*'])
-      .pipe(gulp.dest('dist/'));
-});
-
-gulp.task('clear', function() {
-  return gulp.src(['build'], { read: false, allowEmpty: true })
-    .pipe(clean({ force: true }));
-})
-
-gulp.task('build', ['styles', 'assets', 'javaScript', 'html'])
+gulp.task('build', ['styles', 'move', 'assets', 'javaScript', 'html']);
 
