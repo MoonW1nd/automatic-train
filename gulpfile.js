@@ -29,7 +29,7 @@ gulp.task('styles', () => gulp
   .pipe(gulp.dest('build')));
 
 gulp.task('assets', () => gulp
-  .src(['src/assets/**'])
+  .src(['!src/assets/sh.jpg', 'src/assets/**'])
   .pipe(plumber())
   .pipe(imagemin())
   .pipe(gulp.dest('build/assets')));
@@ -38,7 +38,7 @@ gulp.task('javaScript', () => gulp
   .src(['src/**/*.js'])
   .pipe(plumber())
   .pipe(babel({
-    presets: ['@babel/env']
+    presets: ['@babel/env'],
   }))
   .pipe(uglify())
   .pipe(gulp.dest('build')));
@@ -65,7 +65,7 @@ gulp.task('html', () => gulp
   .pipe(gulp.dest('build')));
 
 gulp.task('move', () => {
-  gulp.src(['!./src/**/*.css', '!src/assets/**', '!src/**/*.js', '!src/*.html', 'src/**/*.*'])
+  gulp.src(['!./src/**/*.css', '!src/assets/**', '!src/**/*.js', '!src/*.html', 'src/**/*.*', 'src/assets/sh.jpg'])
     .pipe(gulp.dest('build/'));
 });
 
