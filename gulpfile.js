@@ -27,13 +27,20 @@ function watch() {
 gulp.task('styles', () => {
   const plugins = [
     uncss({
-      html: ['./src/index.html'],
+      html: ['src/index.html'],
     }),
   ];
-  return gulp
-    .src(['./src/**/*.css'])
+
+  gulp
+    .src(['./src/bootstrap.css'])
     .pipe(plumber())
     .pipe(postcss(plugins))
+    .pipe(csso())
+    .pipe(gulp.dest('build'));
+
+  return gulp
+    .src(['!./src/bootstrap.css', './src/**/*.css'])
+    .pipe(plumber())
     .pipe(csso())
     .pipe(gulp.dest('build'));
 });
