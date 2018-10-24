@@ -10,6 +10,8 @@ const clean = require('gulp-clean');
 const minifyHTML = require('gulp-htmlmin');
 const babel = require('gulp-babel');
 const removeEmptyLines = require('gulp-remove-empty-lines');
+const postcss = require('gulp-postcss');
+const uncss = require('postcss-uncss');
 
 
 // FUNCTIONS
@@ -22,11 +24,19 @@ function watch() {
   gulp.watch('src/**/*.html', html).on('change', browserSync.reload);
 }
 
-gulp.task('styles', () => gulp
-  .src(['./src/**/*.css'])
-  .pipe(plumber())
-  .pipe(csso())
-  .pipe(gulp.dest('build')));
+gulp.task('styles', () => {
+  const plugins = [
+    uncss({
+      html: ['./src/index.html'],
+    }),
+  ];
+  return gulp
+    .src(['./src/**/*.css'])
+    .pipe(plumber())
+    .pipe(postcss(plugins))
+    .pipe(csso())
+    .pipe(gulp.dest('build'));
+});
 
 gulp.task('assets', () => gulp
   .src(['src/assets/**'])
