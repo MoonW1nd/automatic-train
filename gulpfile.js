@@ -29,7 +29,7 @@ gulp.task('styles', () => gulp
   .pipe(gulp.dest('build')));
 
 gulp.task('assets', () => gulp
-  .src(['!src/assets/sh.jpg', 'src/assets/**'])
+  .src(['src/assets/**'])
   .pipe(plumber())
   .pipe(imagemin())
   .pipe(gulp.dest('build/assets')));
@@ -65,7 +65,7 @@ gulp.task('html', () => gulp
   .pipe(gulp.dest('build')));
 
 gulp.task('move', () => {
-  gulp.src(['!./src/**/*.css', '!src/assets/**', '!src/**/*.js', '!src/*.html', 'src/**/*.*', 'src/assets/sh.jpg'])
+  gulp.src(['!./src/**/*.css', '!src/assets/**', '!src/**/*.js', '!src/*.html', 'src/**/*.*'])
     .pipe(gulp.dest('build/'));
 });
 
