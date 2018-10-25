@@ -1,3 +1,4 @@
+
 .adjust-bar {
   -webkit-appearance: none;
   appearance: none;
@@ -337,7 +338,6 @@
   margin-top: 6px;
   font-size: 27px;
   font-weight: 700;
-  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .main__info {
   width: 61.585%;
@@ -616,4 +616,3 @@ html {
 .panel__icon_clock {
   background: url("assets/panel__icon_clock.svg") center center/contain no-repeat;
 }
-

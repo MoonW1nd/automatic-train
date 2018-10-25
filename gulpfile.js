@@ -12,7 +12,6 @@ const babel = require('gulp-babel');
 const removeEmptyLines = require('gulp-remove-empty-lines');
 const postcss = require('gulp-postcss');
 const uncss = require('postcss-uncss');
-const svgo = require('gulp-svgo');
 
 
 // FUNCTIONS
@@ -50,7 +49,6 @@ gulp.task('assets', () => gulp
   .src(['src/assets/**'])
   .pipe(plumber())
   .pipe(imagemin())
-  .pipe(svgo())
   .pipe(gulp.dest('build/assets')));
 
 gulp.task('javaScript', () => gulp
@@ -74,8 +72,7 @@ const minifyHTMLOptions = {
   minifySvg: {},
   removeEmptyAttributes: true,
   removeRedundantAttributes: false,
-  collapseWhitespace: true,
-  removeComments: 'all',
+  removeComments: 'safe',
 };
 
 gulp.task('html', () => gulp
