@@ -338,8 +338,12 @@
   margin-top: 6px;
   font-size: 27px;
   font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.fonts-loaded .main__greeting {
   font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .main__info {
   width: 61.585%;
   padding-top: 20px;
@@ -587,8 +591,12 @@ html {
   font-size: 36px;
   font-weight: 700;
   line-height: 1.16;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.fonts-loaded .weather__item-temp {
   font-family: "PT Sans Narrow", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+
 .weather__item_outside {
   padding-right: 31px;
 }
