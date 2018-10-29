@@ -73,6 +73,9 @@ const minifyHTMLOptions = {
   removeEmptyAttributes: true,
   removeRedundantAttributes: false,
   removeComments: 'safe',
+  collapseInlineTagWhitespace: true,
+  collapseWhitespace: true,
+  conservativeCollapse: true,
 };
 
 gulp.task('html', () => gulp
