@@ -335,7 +335,8 @@
   background: url("assets/sh.webp") center center/cover no-repeat;
 }
 .main__greeting {
-  margin-top: 6px;
+  margin-top: 7px;
+  margin-bottom: -1px;
   font-size: 27px;
   font-weight: 700;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
