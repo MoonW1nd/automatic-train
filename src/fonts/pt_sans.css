@@ -2,8 +2,8 @@
 	font-family: 'PT Sans';
 	font-style: normal;
 	font-weight: bold;
-	src: url('pts75f_w-webfont.eot');
-	src: local('PT Sans Bold'), url('pts75f_w-webfont.woff2') format('woff2');
+	src: url('PTS75F_W.eot');
+	src: local('PT Sans Bold'), url('PTS75F_W.woff') format('woff');
 }
 
 @font-face {
