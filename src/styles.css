@@ -9,8 +9,7 @@
 @font-face {
 	font-family: 'PT Sans Narrow';
 	font-weight: bold;
-	src: url('fonts/ptn77f_w.eot');
-	src: local('PT Sans Narrow Bold'), url('fonts/PTN77F_W.woff') format('woff');
+	src: local('PT Sans Narrow Bold'), url('fonts/subset-PTN77F_W.woff2') format('woff2');
 }
 
 .adjust-bar {
