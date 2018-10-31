@@ -2,11 +2,13 @@
 	font-family: 'PT Sans';
 	font-style: normal;
 	font-weight: bold;
-	src: local('PT Sans Bold'), url('pts75f_w.woff2') format('woff2');
+	src: url('pts75f_w-webfont.eot');
+	src: local('PT Sans Bold'), url('pts75f_w-webfont.woff2') format('woff2');
 }
 
 @font-face {
 	font-family: 'PT Sans Narrow';
 	font-weight: bold;
+	src: url('ptn77f_w.eot');
 	src: local('PT Sans Narrow Bold'), url('ptn77f_w.woff2') format('woff2');
 }
